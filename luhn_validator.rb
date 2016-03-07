@@ -10,7 +10,7 @@ module LuhnValidator
 			if i.even?
 				sum += num
 			else
-				sum += ((2 * num).divmod(10).inject(:+))
+				sum += (2 * num).divmod(10).inject(:+)
 			end
 		end
 		sum % 10 == 0 ? true : false
