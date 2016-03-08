@@ -13,10 +13,10 @@ module LuhnValidator
 			if i.even?
 				sum += num
 			else
-				if (num * 2) <= 9
+				if num * 2 <= 9
 					sum += num * 2
 				else
-					sum += ((num * 2) / 10) + ((num * 2) % 10)
+					sum += (num * 2) / 10 + (num * 2) % 10
 				end
 			end
 		end
