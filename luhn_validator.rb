@@ -52,11 +52,10 @@ module LuhnValidator
       if index.even?
         sum += num
       else
-      	product = num * 2
-        if product <= 9
-          sum += product
+        if num * 2 <= 9
+          sum += num * 2
         else
-          sum += product - 9
+          sum += num * 2 - 9
         end
       end
       index+=1
