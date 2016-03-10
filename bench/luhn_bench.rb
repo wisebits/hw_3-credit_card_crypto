@@ -32,6 +32,7 @@ Benchmark.bm(15) do |bench|
       card_numbers.each do |number|
         cc = CreditCard.new(number, nil, nil, nil)
         cc.validate_checksum_adi
+      end
     end
   end
 
