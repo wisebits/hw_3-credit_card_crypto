@@ -27,9 +27,10 @@ module LuhnValidator
   def validate_checksum_elvis
     nums_a = number.to_s.chars.map(&:to_i)
     sum = 0
+    index = 0
 
-    nums_a.reverse_each.with_index do |num, i|
-      if i.even?
+    nums_a.reverse_each do |num|
+      if index.even?
         sum += num
       else
       	product = num * 2
@@ -39,6 +40,7 @@ module LuhnValidator
           sum += product / 10 + product % 10
         end
       end
+      index+=1
     end
     sum % 10 == 0 ? true : false
   end
