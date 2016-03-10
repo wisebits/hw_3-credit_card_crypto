@@ -56,7 +56,7 @@ module LuhnValidator
         if product <= 9
           sum += product
         else
-          sum += product / 10 + product % 10
+          sum += product - 9
         end
       end
       index+=1
