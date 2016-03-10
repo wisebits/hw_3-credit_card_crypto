@@ -9,7 +9,9 @@ cards.each do |name, numbers|
     numbers['valid'].each do |number|
       it "works on card #: #{number}" do
         card = CreditCard.new(number, nil, nil, nil)
-        card.validate_checksum.must_equal true
+        card.validate_checksum_nichole.must_equal true
+        card.validate_checksum_adi.must_equal true
+        card.validate_checksum_elvis.must_equal true
       end
     end
   end
@@ -18,7 +20,9 @@ cards.each do |name, numbers|
     numbers['invalid'].each do |number|
       it "should not work on card #: #{number}" do
         card = CreditCard.new(number, nil, nil, nil)
-        card.validate_checksum.wont_equal true
+        card.validate_checksum_elvis.wont_equal true
+        card.validate_checksum_nichole.wont_equal true
+        card.validate_checksum_adi.wont_equal true
       end
     end
   end
