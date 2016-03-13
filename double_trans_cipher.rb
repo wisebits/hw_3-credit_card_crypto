@@ -11,11 +11,13 @@ module DoubleTranspositionCipher
     size = Math.sqrt(document.length).ceil
     matrix = document.to_s.chars.map.each_slice(size).to_a
     matrix.shuffle!(random: Random.new(key))
+    matrix = matrix.map { |m| m.shuffle!(random: Random.new(key)) }
+    matrix.join
 
     # matrix visual
-    matrix.each do |x| 
-      puts "#{x}" 
-    end
+   # matrix.each do |x| 
+    #  puts "#{x}" 
+    #end
   end
 
 
