@@ -8,22 +8,16 @@ module DoubleTranspositionCipher
     # 3. sort rows in predictibly random way using key as seed
     # 4. sort columns of each row in predictibly random way
     # 5. return joined cyphertext
-    document = document.to_s.chars.map(&:to_s)
-
     size = Math.sqrt(document.length).ceil
+    matrix = document.to_s.chars.map.each_slice(size).to_a
+    matrix.shuffle!(random: Random.new(key))
 
-    # test matrix
-    output = document.each_slice(size).to_a
-    output.each do |x| 
+    # matrix visual
+    matrix.each do |x| 
       puts "#{x}" 
     end
-
-
-    
-  
   end
 
-  
 
   def self.decrypt(ciphertext, key)
     # TODO: FILL THIS IN!
