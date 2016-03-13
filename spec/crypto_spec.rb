@@ -34,6 +34,19 @@ describe 'Test card info encryption' do
     end
   end
 
+  describe 'Using Double transposition cipher' do
+    it 'should encrypt card information' do
+      enc = SubstitutionCipher::Permutation.encrypt(@cc, @key)
+      enc.wont_equal @cc.to_s
+    end
+
+    it 'should decrypt text' do
+      enc = SubstitutionCipher::Permutation.encrypt(@cc, @key)
+      dec = SubstitutionCipher::Permutation.decrypt(enc, @key)
+      dec.must_equal @cc.to_s
+    end
+  end
+
   # TODO: Add tests for double transposition and AES ciphers
   #       Can you DRY out the tests using metaprogramming? (see lecture slide)
 end
