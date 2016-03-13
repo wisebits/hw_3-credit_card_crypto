@@ -46,11 +46,11 @@ And bench test the performance of your code by running the bench code:
     $ ruby bench/luhn_bench.rb
 
 ### B. Substitution Ciphers
-Your team will implement two ciphers that we saw in class: the Caesar Cipher and the Permutation Cipher.
+Your team will implement three ciphers that we saw in class: the Caesar Cipher, Permutation Cipher and Double Transposition Cipher.
 
 - Implement the `SubstitutionCipher` module in `substitution_cipher.rb`
   - Create encrypt and decrypt methods of both ciphers
-    - all methods take plaintext `document` strings with characters are printable ASCII (ord 32-126)
+    - all methods take plaintext `document` strings with characters that are printable ASCII (ord 32-126)
     - all methods take a positive `key` integer
     - all methods return a string (encrypted or decrypted)
     - Make sure the decrypt method recreates the original document given before encryption!
