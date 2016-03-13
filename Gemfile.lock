@@ -1,6 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
+<<<<<<< HEAD
     ast (2.2.0)
     json (1.8.3)
     minitest (5.8.4)
@@ -16,6 +17,10 @@ GEM
       unicode-display_width (~> 0.3)
     ruby-progressbar (1.7.5)
     unicode-display_width (0.3.1)
+=======
+    json (1.8.3)
+    minitest (5.8.4)
+>>>>>>> 3201c4e1aceeff2cbf1042b82714687d2815c2ee
 
 PLATFORMS
   ruby
@@ -23,7 +28,10 @@ PLATFORMS
 DEPENDENCIES
   json
   minitest
+<<<<<<< HEAD
   rubocop
+=======
+>>>>>>> 3201c4e1aceeff2cbf1042b82714687d2815c2ee
 
 BUNDLED WITH
    1.11.2
