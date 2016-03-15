@@ -7,6 +7,12 @@ module DoubleTranspositionCipher
     # 3. sort rows in predictibly random way using key as seed
     # 4. sort columns of each row in predictibly random way
     # 5. return joined cyphertext
+    str = document.to_s
+    col = Math.sqrt(str.length).ceil
+    matrix = []
+    str.chars.map.each_slice(col) { |c| matrix << c}
+    matrix.shuffle!(random: Random.new(key))
+    matrix.map { |m| m.shuffle!(random: Random.new(key))}.join
   end
 
   def self.decrypt(ciphertext, key)
