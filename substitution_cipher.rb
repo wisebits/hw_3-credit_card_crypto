@@ -1,4 +1,6 @@
+# Implementation of Caesar and Permuation ciphers
 module SubstitutionCipher
+  # Caesar implementation
   module Caesar
     # Encrypts document using key
     # Arguments:
@@ -7,12 +9,7 @@ module SubstitutionCipher
     # Returns: String
     def self.encrypt(document, key)
       # TODO: encrypt string using caesar cipher
-      document.to_s.chars.map {|c| (c.ord + key).chr}.join
-    end
-
-    def self.encrypt_2(document, key)
-      # TODO: encrypt string using caesar cipher
-      key > 0 ? document.to_s.chars.map { |p| (p.ord + key).chr }.join : caesar_error
+      key > 0 ? document.to_s.chars.map {|c| (c.ord + key).chr}.join : caesar_error
     end
 
     # Decrypts String document using integer key
@@ -22,12 +19,7 @@ module SubstitutionCipher
     # Returns: String
     def self.decrypt(document, key)
       # TODO: decrypt string using caesar cipher
-      document.to_s.chars.map {|c| (c.ord - key).chr}.join
-    end
-
-    def self.decrypt_2(document, key)
-      # TODO: decrypt string using caesar cipher
-      key > 0 ? document.to_s.chars.map { |c| (c.ord - key).chr }.join : caesar_error
+      key > 0 ? document.to_s.chars.map {|c| (c.ord - key).chr}.join : caesar_error
     end
 
     def caesar_error
@@ -35,6 +27,7 @@ module SubstitutionCipher
     end
   end
 
+  # Permuation implementation
   module Permutation
     # Encrypts document using key
     # Arguments:
