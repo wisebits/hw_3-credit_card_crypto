@@ -9,7 +9,11 @@ module SubstitutionCipher
     # Returns: String
     def self.encrypt(document, key)
       # TODO: encrypt string using caesar cipher
-      key > 0 ? document.to_s.chars.map {|c| (c.ord + key).chr}.join : caesar_error
+      if key > 0
+        document.to_s.chars.map { |c| (c.ord + key).chr }.join
+      else
+        caesar_error
+      end
     end
 
     # Decrypts String document using integer key
@@ -19,11 +23,15 @@ module SubstitutionCipher
     # Returns: String
     def self.decrypt(document, key)
       # TODO: decrypt string using caesar cipher
-      key > 0 ? document.to_s.chars.map {|c| (c.ord - key).chr}.join : caesar_error
+      if key > 0
+        document.to_s.chars.map { |c| (c.ord - key).chr }.join
+      else
+        caesar_error
+      end
     end
 
     def caesar_error
-      "Key must be positive!"
+      'Key must be positive!'
     end
   end
 
@@ -34,13 +42,8 @@ module SubstitutionCipher
     #   document: String
     #   key: Fixnum (integer)
     # Returns: String
-    def self.encrypt(document, key)
-      # TODO: encrypt string using a permutation cipher
-      permutation = (0..127).to_a.shuffle(random: Random.new(key))
-      document.to_s.chars.map {|c| permutation[c.ord].chr}.join
-    end
 
-    def self.encrypt_2(document, key)
+    def self.encrypt(document, key)
       # TODO: encrypt string using a permutation cipher
       if key > 0
         permutation = (0..127).to_a.shuffle(random: Random.new(key))
@@ -55,13 +58,8 @@ module SubstitutionCipher
     #   document: String
     #   key: Fixnum (integer)
     # Returns: String
-    def self.decrypt(document, key)
-      # TODO: decrypt string using a permutation cipher
-      permutation = (0..127).to_a.shuffle(random: Random.new(key))
-      document.to_s.chars.map {|c| permutation.index(c.ord).chr }.join
-    end
 
-    def self.decrypt_2(document, key)
+    def self.decrypt(document, key)
       # TODO: decrypt string using a permutation cipher
       if key > 0
         permutation = (0..127).to_a.shuffle(random: Random.new(key))
@@ -72,7 +70,7 @@ module SubstitutionCipher
     end
 
     def permutation_error
-      "Key must be positive!"
+      'Key must be positive!'
     end
   end
 end
