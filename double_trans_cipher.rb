@@ -1,3 +1,12 @@
+# Array class for unshuffling
+class Array
+  def unshuffle(random:)
+    transformed_order = (0...length).to_a.shuffle!(random: random)
+    sort_by.with_index { |_, i| transformed_order[i] }
+  end
+end
+
+# Implementation of Double Transposition Cipher
 module DoubleTranspositionCipher
   def self.encrypt(document, key)
     # TODO: FILL THIS IN!
@@ -7,9 +16,26 @@ module DoubleTranspositionCipher
     # 3. sort rows in predictibly random way using key as seed
     # 4. sort columns of each row in predictibly random way
     # 5. return joined cyphertext
+    document = document.to_s
+    # maintain seed state, generate same number each time
+    fill_blanks = Random.new(key).rand(100)
+    even_size = Math.sqrt(document.length).ceil
+
+    document.prepend(fill_blanks.chr) while (document.length % even_size) != 0
+
+    matrix = document.chars.map.each_slice(even_size).to_a
+    matrix.shuffle!(random: Random.new(key))
+    matrix.map { |m| m.shuffle!(random: Random.new(key)) }
+    matrix.join
   end
 
   def self.decrypt(ciphertext, key)
     # TODO: FILL THIS IN!
+    remove_blanks = Random.new(key).rand(100)
+    even_size = Math.sqrt(ciphertext.length).ceil
+    matrix = ciphertext.chars.map.each_slice(even_size).to_a
+    matrix.map! { |m| m.unshuffle(random: Random.new(key)) }
+    matrix = matrix.unshuffle(random: Random.new(key))
+    matrix.join.gsub!(remove_blanks.chr, '')
   end
 end
