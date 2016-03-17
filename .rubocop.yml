@@ -1,4 +1,6 @@
 AllCops:
   TargetRubyVersion: 2.2
 Metrics/AbcSize:
-  Max: 25 
+  Max: 25
+Style:
+  LineLength: 85
