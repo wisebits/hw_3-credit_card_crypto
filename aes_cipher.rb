@@ -2,6 +2,7 @@ require 'openssl'
 require 'base64'
 require 'json'
 
+# AesCipher module with encrypt and decrypt
 module AesCipher
   def self.encrypt(document, key)
     # TODO: Return JSON string of array: [iv, ciphertext]
@@ -14,7 +15,10 @@ module AesCipher
     iv = cipher.random_iv
     ciphertext = cipher.update(document.to_s) + cipher.final
 
-    {iv: Base64.strict_encode64(iv), ciphertext: Base64.strict_encode64(ciphertext)}.to_json
+    iv_base64 = Base64.strict_encode64(iv)
+    ciphertext_base64 = Base64.strict_encode64(ciphertext)
+
+    { iv: iv_base64, ciphertext: ciphertext_base64 }.to_json
   end
 
   def self.decrypt(aes_crypt, key)
@@ -24,12 +28,12 @@ module AesCipher
     decipher.key = Digest::SHA256.hexdigest(key.to_s)
     decipher.iv = Base64.strict_decode64(encrypted_aes['iv'])
 
-    plaintext = decipher.update(Base64.strict_decode64(encrypted_aes['ciphertext'])) + decipher.final
+    ciphertext_base64 = Base64.strict_decode64(encrypted_aes['ciphertext'])
 
+    decipher.update(ciphertext_base64) + decipher.final
   end
 end
 
 # quick test
-test = AesCipher.encrypt("thisisteamwisebits",5)
-puts (test)
-puts(AesCipher.decrypt(test,5))
+test = AesCipher.encrypt('thisisteamwisebits', 5)
+puts(AesCipher.decrypt(test, 5))
