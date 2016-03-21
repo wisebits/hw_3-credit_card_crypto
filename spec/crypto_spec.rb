@@ -6,7 +6,7 @@ require 'minitest/autorun'
 define_method :testing do |my_args|
   describe 'Test card info encryption' do
     before do
-      @cc = CreditCard.new('4916603231464963', 'Mar-30-2020',
+      @cc = CreditCard.new('4916603231464963', 'Mar-30-2020', 
                            'Soumya Ray', 'Visa')
       @key = 3
     end
@@ -14,6 +14,7 @@ define_method :testing do |my_args|
       it 'should encrypt card information' do
         enc = my_args.encrypt(@cc, @key)
         enc.wont_equal @cc.to_s
+        enc.wont_be_nil
       end
       it 'should decrypt text' do
         enc = my_args.encrypt(@cc, @key)
