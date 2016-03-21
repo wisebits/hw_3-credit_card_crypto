@@ -24,7 +24,6 @@ module AesCipher
     decipher.key = Digest::SHA256.hexdigest(key.to_s)
     decipher.iv = Base64.strict_decode64(encrypted_aes['iv'])
 
-    decipher.iv = Base64.strict_decode64(encrypted_aes['iv'])
     plaintext = decipher.update(Base64.strict_decode64(encrypted_aes['ciphertext'])) + decipher.final
 
   end
