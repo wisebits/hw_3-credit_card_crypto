@@ -23,4 +23,4 @@ module AesCipher
 end
 
 
-puts (AesCipher.encrypt("elvisisdoingallhisbest",5))
+puts (AesCipher.encrypt("thisisteamwisebits",5))
