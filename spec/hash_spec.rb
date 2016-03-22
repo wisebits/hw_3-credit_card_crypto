@@ -16,9 +16,7 @@ describe 'Test hashing requirements' do
       # TODO: Check that each card produces the same hash if hashed repeatedly
       it 'should produce the same hash for identical cards' do
         hashes = []
-        cards.each do |card|
-          2.times { hashes.push(card.hash) }
-        end
+        cards.each { |card| 2.times { hashes.push(card.hash) } }
         hashes.each_index do |i|
           hashes[i].wont_be_nil
           hashes[i].must_equal hashes[i + 1] if i.even?
@@ -41,9 +39,7 @@ describe 'Test hashing requirements' do
       # TODO: Check that each card produces the same hash if hashed repeatedly
       it 'should produce the same hash for identical cards' do
         hashes = []
-        cards.each do |card|
-          2.times { hashes.push(card.hash_secure) }
-        end
+        cards.each { |card| 2.times { hashes.push(card.hash_secure) } }
         hashes.each_index do |i|
           hashes[i].wont_be_nil
           hashes[i].must_equal hashes[i + 1] if i.even?
