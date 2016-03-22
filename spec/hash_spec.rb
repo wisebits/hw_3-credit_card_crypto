@@ -19,10 +19,10 @@ describe 'Test hashing requirements' do
         cards.each do |card|
           2.times { hashes.push(card.hash) }
         end
-        hashes.each_index { |i|
+        hashes.each_index do |i|
           hashes[i].wont_be_nil
           hashes[i].must_equal hashes[i + 1] if i.even?
-        }
+        end
       end
     end
 
@@ -44,10 +44,10 @@ describe 'Test hashing requirements' do
         cards.each do |card|
           2.times { hashes.push(card.hash_secure) }
         end
-        hashes.each_index { |i|
+        hashes.each_index do |i|
           hashes[i].wont_be_nil
           hashes[i].must_equal hashes[i + 1] if i.even?
-        }
+        end
       end
     end
 
