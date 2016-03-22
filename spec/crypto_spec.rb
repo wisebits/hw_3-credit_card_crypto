@@ -17,7 +17,7 @@ describe 'Test card info encryption' do
   end
 
   ciphers.each do |name, cipher|
-    describe 'Using #{name} cipher' do
+    describe "Using #{name} cipher" do
       it 'should encrypt card information' do
         enc = cipher.encrypt(@cc, @key)
         enc.wont_equal @cc.to_s
