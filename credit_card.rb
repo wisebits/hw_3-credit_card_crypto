@@ -1,5 +1,6 @@
 require_relative './luhn_validator.rb'
 require 'json'
+require 'openssl'
 
 # CreditCard class
 class CreditCard
@@ -33,19 +34,19 @@ class CreditCard
   end
 
   # return a new CreditCard object given a serialized (JSON) representation
-  def self.from_s(card_s)
+  def from_s(card_s)
     # TODO: deserializing a CreditCard object
+    JSON.parse(card_s.to_s)
   end
 
   # return a hash of the serialized credit card object
   def hash
-    c = to_s
-    c.to_i(36)
+    # c.to_i(36)
     # TODO: implement this method
     #   - Produce a hash (using default hash method) of the credit card's
     #     serialized contents.
     #   - Credit cards with identical information should produce the same hash
-
+    to_s.hash
   end
 
   # return a cryptographically secure hash
@@ -53,9 +54,6 @@ class CreditCard
     # TODO: implement this method
     #   - Use sha256 from openssl to create a cryptographically secure hash.
     #   - Credit cards with identical information should produce the same hash
+    OpenSSL::Digest::SHA256.digest(to_s).unpack('H*')
   end
 end
-
-c = CreditCard.new('4916603231464963', 'Mar-30-2020', 'Soumya Ray', 'Visa')
-#puts c
-puts c.hash
