@@ -39,10 +39,13 @@ class CreditCard
 
   # return a hash of the serialized credit card object
   def hash
+    c = to_s
+    c.to_i(36)
     # TODO: implement this method
     #   - Produce a hash (using default hash method) of the credit card's
     #     serialized contents.
     #   - Credit cards with identical information should produce the same hash
+
   end
 
   # return a cryptographically secure hash
@@ -52,3 +55,7 @@ class CreditCard
     #   - Credit cards with identical information should produce the same hash
   end
 end
+
+c = CreditCard.new('4916603231464963', 'Mar-30-2020', 'Soumya Ray', 'Visa')
+#puts c
+puts c.hash
