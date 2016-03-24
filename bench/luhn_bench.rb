@@ -9,11 +9,11 @@ Benchmark.bm(15) do |bench|
     card_number_length.times.map { Random.rand(10).to_s }.join
   end
 
-  bench.report('luhn_benchmark_adi') do
+  bench.report('luhn_benchmark') do
     5.times do
       card_numbers.each do |number|
         cc = CreditCard.new(number, nil, nil, nil)
-        cc.validate_checksum_adi
+        cc.validate_checksum
       end
     end
   end
