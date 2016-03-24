@@ -4,6 +4,7 @@ GEM
     ast (2.2.0)
     json (1.8.3)
     minitest (5.8.4)
+    openssl (0.2.0)
     parser (2.3.0.6)
       ast (~> 2.2)
     powerpack (0.1.1)
@@ -23,6 +24,7 @@ PLATFORMS
 DEPENDENCIES
   json
   minitest
+  openssl
   rubocop
 
 BUNDLED WITH
