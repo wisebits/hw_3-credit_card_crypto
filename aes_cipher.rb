@@ -33,7 +33,3 @@ module AesCipher
     decipher.update(ciphertext_base64) + decipher.final
   end
 end
-
-# quick test
-test = AesCipher.encrypt('thisisteamwisebits', 5)
-puts(AesCipher.decrypt(test, 5))
